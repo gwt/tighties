@@ -12,14 +12,14 @@
 	<g:DockLayoutPanel>
 		<g:north size="30">
 			<g:VerticalPanel>
-				<g:Label addStyleNames="{style.bigger} {style.important}">tightie</g:Label>
+				<g:Label addStyleNames="{style.bigger} {style.important}">tightie - we are evil.</g:Label>
 				<g:Button ui:field="getButton">get code</g:Button>
 			</g:VerticalPanel>
 		</g:north>
 		<g:center>
 			<g:VerticalPanel>
-				<g:Label addStyleNames="{style.important}">tightest sites</g:Label>
-				<g:Grid ui:field="grid" />
+				<g:Label addStyleNames="{style.important}">tightness index</g:Label>
+				<g:FlexTable ui:field="grid" />
 			</g:VerticalPanel>
 		</g:center>
 	</g:DockLayoutPanel>

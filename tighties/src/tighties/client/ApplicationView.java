@@ -1,14 +1,12 @@
 package tighties.client;
 
-import java.util.ArrayList;
-
 import tighties.client.ApplicationPresenter.Display;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ApplicationView extends Composite implements Display {
@@ -18,23 +16,17 @@ public class ApplicationView extends Composite implements Display {
 	}
 
 	@UiField
-	Grid grid;
+	FlexTable grid;
 
 	public ApplicationView() {
 		initWidget(uiBinder.createAndBindUi(this));
-	
-		grid.setHTML(0, 0, "domain");
-		grid.setHTML(0, 1, "tighties");
 	}
-	
+
 	@Override
-	public void addToGrid(final ArrayList<Pair<String, Integer>> data) {
+	public void addToGrid(String domain, int tighties) {
 		int rowCount = grid.getRowCount();
-		
-		for (final Pair<String, Integer> row: data) {
-			grid.setHTML(rowCount, 0, row.getLeft());
-			grid.setHTML(rowCount, 1, row.getRight().toString());
-			rowCount++;
-		}
+
+		grid.setHTML(rowCount, 0, domain);
+		grid.setHTML(rowCount, 1, String.valueOf(tighties));
 	}
 }
