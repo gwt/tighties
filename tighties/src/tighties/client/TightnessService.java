@@ -5,7 +5,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("tightness")
 public interface TightnessService extends RemoteService {
-	void incrementViews(String domain);
-	void incrementTighties(String domain);
+	int incrementViews(String domain);
+	int incrementTighties(String domain);
 	Tightness[] getTopTightSites();
+	Tightness getTightnessByDomain(String domain);
 }

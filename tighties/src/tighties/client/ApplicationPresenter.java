@@ -11,17 +11,17 @@ public class ApplicationPresenter {
 
 	public ApplicationPresenter(final Display display) {
 		this.display = display;
-		getRatingData();
+		insertTopSites();
 	}
 
-	private void getRatingData() {
+	private void insertTopSites() {
 		AsyncProvider.get(new AsyncCallback<TightnessServiceAsync>() {
 			@Override
 			public void onSuccess(TightnessServiceAsync service) {
 				service.getTopTightSites(new AsyncCallback<Tightness[]>() {
 					@Override
 					public void onSuccess(Tightness[] result) {
-						for (Tightness t: result) {
+						for (final Tightness t: result) {
 							display.addToGrid(t.getDomain(), t.getTighties());
 						}
 					}

@@ -77,4 +77,18 @@ public class TightnessServerTest extends TestCase {
 		
 		assertEquals(1, service.getTopTightSites()[0].getViews());
 	}
+	
+	public void testGetTightnessFresh() {
+		db.put(getTightnessEntity(new Tightness("a", 0, 0)));
+
+		assertEquals(0, service.getTightnessByDomain("a").getTighties());
+	}
+	
+	public void testGetTightnessIncremented() {
+		db.put(getTightnessEntity(new Tightness("a", 0, 0)));
+		service.incrementTighties("a");
+		
+		assertEquals(1, service.getTightnessByDomain("a").getTighties());
+	}
+
 }

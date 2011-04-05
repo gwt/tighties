@@ -19,13 +19,13 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 	private static final DatastoreService db = DatastoreServiceFactory.getDatastoreService();
 
 	@Override
-	public void incrementViews(String domain) {
-		incrementIntegerField(domain, "views");
+	public int incrementViews(String domain) {
+		return incrementIntegerField(domain, "views");
 	}
 
 	@Override
-	public void incrementTighties(String domain) {
-		incrementIntegerField(domain, "tighties");
+	public int incrementTighties(String domain) {
+		return incrementIntegerField(domain, "tighties");
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 	 * @param domain	The domain of the entity t
 	 * @param fieldName
 	 */
-	private void incrementIntegerField(final String domain, final String fieldName) {
+	private int incrementIntegerField(final String domain, final String fieldName) {
 		final Query q = new Query(Tightness.class.getSimpleName());
 		q.addFilter("domain", FilterOperator.EQUAL, domain);
 		
@@ -50,6 +50,8 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 		e.setProperty(fieldName, 1 + Integer.parseInt(String.valueOf(e.getProperty(fieldName))));
 		
 		db.put(e);
+		
+		return Integer.parseInt(String.valueOf(e.getProperty(fieldName)));
 	}
 
 	@Override
@@ -63,5 +65,19 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 		}
 		
 		return l.toArray(new Tightness[0]);
+	}
+
+	@Override
+	public Tightness getTightnessByDomain(final String domain) {
+		final Query q = new Query(Tightness.class.getSimpleName());
+		q.addFilter("domain", FilterOperator.EQUAL, domain);
+		
+		final Entity e = db.prepare(q).asSingleEntity();
+		
+		if (null == e) {
+			throw new IllegalArgumentException("Domain does not exist yet");
+		}
+		
+		return new Tightness(String.valueOf(e.getProperty("domain")), Integer.parseInt(String.valueOf(e.getProperty("views"))), Integer.parseInt(String.valueOf(e.getProperty("tighties"))));
 	}
 }

@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.tighties {
+			font-weight: bold;
+			margin-right: 5px;
+		}
+	</ui:style>
+	<g:HorizontalPanel>
+		<g:Label ui:field="tighties" addStyleNames="{style.tighties}" />
+		<g:Button ui:field="button" text="Tightify!" />
+	</g:HorizontalPanel>
+</ui:UiBinder> 
