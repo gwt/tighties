@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.bigger {
+			font-size: 200%;
+		}
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:DockLayoutPanel>
+		<g:north size="30">
+			<g:VerticalPanel>
+				<g:Label addStyleNames="{style.bigger} {style.important}">tightie</g:Label>
+				<g:Button ui:field="getButton">get code</g:Button>
+			</g:VerticalPanel>
+		</g:north>
+		<g:center>
+			<g:VerticalPanel>
+				<g:Label addStyleNames="{style.important}">tightest sites</g:Label>
+				<g:Grid ui:field="grid" />
+			</g:VerticalPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 
