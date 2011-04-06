@@ -16,6 +16,7 @@ public class IFramePresenter {
 		final String domain = Location.getParameter("r");
 		
 		if (null != domain) {
+			// TODO avoid domain does not exist yet error
 			displayCurrentTighties(display, domain);
 			allowTightification(display, domain);
 		}

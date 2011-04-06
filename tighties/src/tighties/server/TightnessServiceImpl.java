@@ -75,7 +75,7 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 		final Entity e = db.prepare(q).asSingleEntity();
 		
 		if (null == e) {
-			throw new IllegalArgumentException("Domain does not exist yet");
+			return new Tightness(domain, 0, 0); // Domain does not exist yet
 		}
 		
 		return new Tightness(String.valueOf(e.getProperty("domain")), Integer.parseInt(String.valueOf(e.getProperty("views"))), Integer.parseInt(String.valueOf(e.getProperty("tighties"))));
