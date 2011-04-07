@@ -1,19 +1,12 @@
 package tighties.test;
 
-import junit.framework.TestCase;
 import tighties.client.Tightness;
 import tighties.server.TightnessServiceImpl;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
-public class TightnessServerTest extends TestCase {
+public class TightnessServiceTest extends DatastoreTest {
 	private TightnessServiceImpl service;
-	private LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
-	private DatastoreService db = DatastoreServiceFactory.getDatastoreService();
 
 	private Entity getTightnessEntity(final Tightness t) {
 		final Entity e = new Entity(Tightness.class.getSimpleName());
@@ -25,13 +18,8 @@ public class TightnessServerTest extends TestCase {
 
 	@Override
 	protected void setUp() throws Exception {
+		super.setUp();
 		service = new TightnessServiceImpl();
-		helper.setUp();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-		helper.tearDown();
 	}
 
 	public void testGetNotNull() {
