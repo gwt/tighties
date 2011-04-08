@@ -80,4 +80,9 @@ public class TightnessServiceImpl extends RemoteServiceServlet implements Tightn
 		
 		return new Tightness(String.valueOf(e.getProperty("domain")), Integer.parseInt(String.valueOf(e.getProperty("views"))), Integer.parseInt(String.valueOf(e.getProperty("tighties"))));
 	}
+
+	@Override
+	public void hello() {
+		// do nothing just go back to the client
+	}
 }

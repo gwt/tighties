@@ -7,4 +7,5 @@ public interface TightnessServiceAsync {
 	void incrementViews(String domain, AsyncCallback<Integer> callback);
 	void getTopTightSites(AsyncCallback<Tightness[]> callback);
 	void getTightnessByDomain(String domain, AsyncCallback<Tightness> callback);
+	void hello(AsyncCallback<Void> callback);
 }

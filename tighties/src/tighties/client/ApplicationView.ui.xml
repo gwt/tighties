@@ -10,9 +10,16 @@
 			font-weight: bold;
 		}
 	</ui:style>
-	<g:VerticalPanel>
-		<g:Label addStyleNames="{style.bigger} {style.important}">tightie - we are evil.</g:Label>
-		<g:Label addStyleNames="{style.important}">tightness index</g:Label>
-		<g:FlexTable ui:field="grid" />
-	</g:VerticalPanel>
+	<g:HorizontalPanel>
+		<g:VerticalPanel>
+			<g:Label addStyleNames="{style.bigger} {style.important}">tightie - we are evil.</g:Label>
+			<g:Label addStyleNames="{style.important}">tightness index</g:Label>
+			<g:FlexTable ui:field="grid" />
+			<g:Label ui:field="log">Minimum roundtrip time: </g:Label>
+		</g:VerticalPanel>
+		<g:VerticalPanel>
+			<g:Label addStyleNames="{style.important}">uncool sites - sites that grew too fast</g:Label>
+			<!-- g:FlexTable ui:field="grid" / -->
+		</g:VerticalPanel>
+	</g:HorizontalPanel>
 </ui:UiBinder> 

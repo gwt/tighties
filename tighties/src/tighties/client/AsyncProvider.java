@@ -1,26 +1,13 @@
 package tighties.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class AsyncProvider {
-	private static TightnessServiceAsync service;
+	// create it to avoid reloading additional javascript source
+	private static TightnessServiceAsync service = GWT.create(TightnessService.class);
 
 	public static void get(final AsyncCallback<TightnessServiceAsync> callback) {
-		GWT.runAsync(new RunAsyncCallback() {
-			@Override
-			public void onSuccess() {
-				if (null == service) {
-					service = GWT.create(TightnessService.class);
-				}
-				callback.onSuccess(service);
-			}
-			
-			@Override
-			public void onFailure(final Throwable reason) {
-				callback.onFailure(reason);
-			}
-		});
+		callback.onSuccess(service);
 	}
 }

@@ -7,6 +7,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ApplicationView extends Composite implements Display {
@@ -17,6 +19,8 @@ public class ApplicationView extends Composite implements Display {
 
 	@UiField
 	FlexTable grid;
+	@UiField
+	Label log;
 
 	public ApplicationView() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -28,5 +32,10 @@ public class ApplicationView extends Composite implements Display {
 
 		grid.setHTML(rowCount, 0, domain);
 		grid.setHTML(rowCount, 1, String.valueOf(tighties));
+	}
+	
+	@Override
+	public HasText getLog() {
+		return log;
 	}
 }

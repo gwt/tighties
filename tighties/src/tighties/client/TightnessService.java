@@ -9,4 +9,5 @@ public interface TightnessService extends RemoteService {
 	int incrementTighties(String domain);
 	Tightness[] getTopTightSites();
 	Tightness getTightnessByDomain(String domain);
+	void hello();
 }
