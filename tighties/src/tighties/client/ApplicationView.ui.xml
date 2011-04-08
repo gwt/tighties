@@ -5,21 +5,25 @@
 		.bigger {
 			font-size: 200%;
 		}
-		
 		.important {
 			font-weight: bold;
 		}
 	</ui:style>
-	<g:HorizontalPanel>
-		<g:VerticalPanel>
+	<g:DockLayoutPanel>
+		<g:north size="50">
 			<g:Label addStyleNames="{style.bigger} {style.important}">tightie - we are evil.</g:Label>
-			<g:Label addStyleNames="{style.important}">tightness index</g:Label>
-			<g:FlexTable ui:field="grid" />
-			<g:Label ui:field="log">Minimum roundtrip time: </g:Label>
-		</g:VerticalPanel>
-		<g:VerticalPanel>
-			<g:Label addStyleNames="{style.important}">uncool sites - sites that grew too fast</g:Label>
-			<!-- g:FlexTable ui:field="grid" / -->
-		</g:VerticalPanel>
-	</g:HorizontalPanel>
+		</g:north>
+		<g:center>
+			<g:HorizontalPanel>
+				<g:VerticalPanel>
+					<g:Label addStyleNames="{style.important}">tightness index</g:Label>
+					<g:FlexTable ui:field="grid" />
+				</g:VerticalPanel>
+				<g:VerticalPanel>
+					<g:Label addStyleNames="{style.important}">uncool sites</g:Label>
+					<g:FlexTable ui:field="uncool" />
+				</g:VerticalPanel>
+			</g:HorizontalPanel>
+		</g:center>
+	</g:DockLayoutPanel>
 </ui:UiBinder> 

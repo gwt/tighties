@@ -2,14 +2,12 @@ package tighties.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasText;
 
 public class ApplicationPresenter {
 	private static final TightnessServiceAsync service = GWT.create(TightnessService.class);
 
 	public interface Display {
 		void addToGrid(String domain, int tighties);
-		HasText getLog();
 	}
 
 	private Display display;
@@ -17,9 +15,9 @@ public class ApplicationPresenter {
 	public ApplicationPresenter(final Display display) {
 		this.display = display;
 		insertTopSites();
-		measureRoundtripTime(10);
+//		measureRoundtripTime(10);
 	}
-
+/*
 	private void measureRoundtripTime(final int times) {
 		if (times == 0) {
 			// stop measuring the timing
@@ -39,7 +37,7 @@ public class ApplicationPresenter {
 				}
 			});
 		}
-	}
+	}*/
 
 	private void insertTopSites() {
 		service.getTopTightSites(new AsyncCallback<Tightness[]>() {
@@ -55,9 +53,9 @@ public class ApplicationPresenter {
 			}
 		});
 	}
-
+/*
 	private void appendLogText(final String text) {
 		final String originalText = display.getLog().getText();
 		display.getLog().setText(originalText + text + " ");
-	}
+	}*/
 }

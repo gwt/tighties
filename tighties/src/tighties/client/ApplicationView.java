@@ -5,10 +5,9 @@ import tighties.client.ApplicationPresenter.Display;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ApplicationView extends Composite implements Display {
@@ -19,23 +18,16 @@ public class ApplicationView extends Composite implements Display {
 
 	@UiField
 	FlexTable grid;
-	@UiField
-	Label log;
 
 	public ApplicationView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@Override
-	public void addToGrid(String domain, int tighties) {
+	public void addToGrid(final String domain, final int tighties) {
 		int rowCount = grid.getRowCount();
 
-		grid.setHTML(rowCount, 0, domain);
+		grid.setWidget(rowCount, 0, new Anchor(domain, "http://"+domain));
 		grid.setHTML(rowCount, 1, String.valueOf(tighties));
-	}
-	
-	@Override
-	public HasText getLog() {
-		return log;
 	}
 }

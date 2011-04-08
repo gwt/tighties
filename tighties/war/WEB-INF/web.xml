@@ -43,4 +43,8 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
+	<static-files>
+		<!-- standard.css is still downloaded on each request. How can this be disabled? -->
+		<include path="/**.css" expiration="30d" />
+	</static-files>
 </web-app>
